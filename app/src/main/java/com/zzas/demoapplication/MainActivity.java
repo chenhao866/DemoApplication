@@ -1,17 +1,14 @@
 package com.zzas.demoapplication;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.zxing.Result;
-import com.zzas.chen.SDsqlist.DatabaseContext;
+
 import com.zzas.chen.SDsqlist.SdCardDBHelper;
 
 
@@ -45,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
             SdCardDBHelper sdCardDBHelper = new SdCardDBHelper(MainActivity.this);
                 sdCardDBHelper.saveUserinfo(MainActivity.this,strName);//将二维码插入数据表
-                isScceed = SpinnerHandler.post(mUpdateResults);
+                isScceed = SpinnerHandler.post(mUpdateResults);//通知线程
             }
         }).start();
     }
-
+    //接收插入数据后的线程回调
     private Handler SpinnerHandler = new Handler();
     private Runnable mUpdateResults = new Runnable() {
         public void run(){
