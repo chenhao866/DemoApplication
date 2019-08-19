@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
             String strName=data.getStringExtra("text"); // 显示识别到的文字
-            SetSQLData(strName);//将二维码插入数据表
+            Toast.makeText(getApplicationContext(), strName, Toast.LENGTH_LONG).show();
+            //SetSQLData(strName);//将二维码插入数据表
         }
     }
 
