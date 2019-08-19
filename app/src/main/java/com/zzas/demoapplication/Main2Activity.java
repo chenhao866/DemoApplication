@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 
 import com.google.zxing.Result;
 import com.zzas.chen.SDsqlist.DatabaseContext;
@@ -31,7 +33,6 @@ public class Main2Activity extends AppCompatActivity implements ZXingScannerView
     protected void onPause() {
         super.onPause();
         mZXingScannerView.stopCamera(); // 活动失去焦点的时候关闭摄像头
-        finish();
     }
 
     @Override
@@ -42,29 +43,11 @@ public class Main2Activity extends AppCompatActivity implements ZXingScannerView
         finish();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    private void mysun(){
-//        new Thread(new Runnable(){
-//            @Override
-//            public void run() {
-//                DatabaseContext dbContext = new DatabaseContext(MainActivity.this);
-//                SdCardDBHelper dbHelper = new SdCardDBHelper(dbContext);
-//                SQLiteDatabase db = dbHelper.getWritableDatabase();// 取得数据库操作
-//                dbHelper.saveUserinfo(db);
-//            }
-//        }).start();
-//    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_CAMERA ){
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
