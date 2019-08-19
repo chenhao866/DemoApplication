@@ -20,7 +20,6 @@ public class Main2Activity extends AppCompatActivity implements ZXingScannerView
         setContentView(mZXingScannerView);
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -32,6 +31,7 @@ public class Main2Activity extends AppCompatActivity implements ZXingScannerView
     protected void onPause() {
         super.onPause();
         mZXingScannerView.stopCamera(); // 活动失去焦点的时候关闭摄像头
+        finish();
     }
 
     @Override
